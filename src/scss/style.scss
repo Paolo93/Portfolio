@@ -12,9 +12,11 @@ body {
     padding: 0;
     margin: 0;
     color: white;
-    background: #0f0c29;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    background: #02050D;  /* fallback for old browsers   #0C1A32*/
+    //background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    //background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     //font-family: 'Audiowide';
     font-family: myFirstFont;
     font-size: 14px;
@@ -24,16 +26,28 @@ h2,h3 {
     color: #c6e2ff;
     animation: neon .08s ease-in-out infinite alternate;
 }
+
 h {
-    font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
+    //font-weight: bold;
+    animation: neon .08s ease-in-out infinite alternate;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+    @media screen and (max-width: 766px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 }
 
 article {
@@ -42,9 +56,9 @@ article {
 
 section {
     margin: 20px 0px;
-    background-color: #1010AB;
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    border: 1px solid rgba(81, 203, 238, 1);
+    background-color: #0C1A32;
+    box-shadow: 0 0 5px #08f;
+    border: 1px solid #08f;
 }
 
 .wrapper {
@@ -53,8 +67,8 @@ section {
     .wrapper_title {
         text-align: center;
         padding: 20px;
-        border: 1px solid rgba(81, 203, 238, 1);
-        box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+        border: 1px solid #08f;
+        box-shadow: 0 0 5px #08f;
         h3 {
             text-transform: uppercase;
             line-height: 1;
@@ -74,13 +88,18 @@ section {
 .name {
     padding: 20px;
     text-align: center;
+    animation: flicker 1.5s infinite alternate;  
 }
 
-.picture {
+.picture_desc {
     text-align: center;
     height: auto;
     display: flex;
     justify-content: center;
+    .picture_desc_describe {
+        padding: 10px;
+        text-align: left;
+    }
     img {
         max-width: 200px;
         width: 100%;
@@ -88,11 +107,41 @@ section {
     }
 }
 
-.describe {
-    text-align: center;
-    padding: 10px;
+
+
+.project {
+    .inner {
+        padding: 10px;
+        overflow: hidden;
+        display: none;
+    }
+    
+    li {
+        list-style: none;
+        a.project_accordion_item {
+            max-width: 100%;
+            width: 95%;
+            display: block;
+            background: rgba(0,0,0,0.78);
+
+            border: 1px solid #08f;
+            box-shadow: 0 0 5px #08f;
+            padding: .75em;
+            border-radius: 0.15em;
+            transition: background .3s ease;
+            text-transform: uppercase;
+            &:hover {
+                background: rgba(0, 0, 0, 0.9);
+            }
+        }
+    }
 }
 
+:root {
+    /* Base font size */
+    font-size: 10px;   
+    --neon-border-color: #08f;
+  }
 
 
 @keyframes neon {
@@ -116,16 +165,41 @@ section {
     }
   }
 
+  @keyframes flicker {
+    
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+
+        
+        box-shadow:
+            0 0 .5rem #fff,
+            inset 0 0 .5rem #fff,
+            0 0 2rem var(--neon-border-color),
+            inset 0 0 2rem var(--neon-border-color),
+            0 0 4rem var(--neon-border-color),
+            inset 0 0 4rem var(--neon-border-color);        
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+        box-shadow: none;
+    }    
+}
 
 
-              /*color: #fff;
-            text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px #fff,
-            0 0 40px #0ff,
-            0 0 80px #0ff,
-            0 0 90px #0ff,
-            0 0 100px #0ff,
-            0 0 150px #0ff;
-            */
+//colors
+//#066B92
+//rgba(81, 203, 238, 1);
+
+
+
+  
+  @keyframes animation {
+      0% { 
+        transform: rotateX(180deg);  
+      }
+    
+      100% {
+        transform: rotateX(0deg); 
+      }
+    }
+
