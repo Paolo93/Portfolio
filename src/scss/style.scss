@@ -88,7 +88,8 @@ section {
 .name {
     padding: 20px;
     text-align: center;
-    animation: flicker 1.5s infinite alternate;  
+    animation: flicker 1.5s infinite alternate; 
+
 }
 
 .picture_desc {
@@ -107,9 +108,16 @@ section {
     }
 }
 
-
+.hobby {
+    .wrapper_content {
+        text-align: center;
+    }
+}
 
 .project {
+    position: relative;
+    overflow: hidden;
+
     .inner {
         padding: 10px;
         overflow: hidden;
@@ -147,42 +155,61 @@ section {
 @keyframes neon {
     from {
       text-shadow:
-      0 0 6px rgba(202,228,225,0.92),
-      0 0 30px rgba(202,228,225,0.34),
+      0 0 3px rgba(202,228,225,0.92),
+      0 0 20px rgba(202,228,225,0.34),
       0 0 12px rgba(30,132,242,0.52),
       0 0 21px rgba(30,132,242,0.92),
-      0 0 34px rgba(30,132,242,0.78),
-      0 0 54px rgba(30,132,242,0.92);
+      0 0 24px rgba(30,132,242,0.78),
+      0 0 34px rgba(30,132,242,0.92);
     }
     to {
       text-shadow:
-      0 0 6px rgba(202,228,225,0.98),
-      0 0 30px rgba(202,228,225,0.42),
+      0 0 3px rgba(202,228,225,0.98),
+      0 0 20px rgba(202,228,225,0.42),
       0 0 12px rgba(30,132,242,0.58),
       0 0 22px rgba(30,132,242,0.84),
-      0 0 38px rgba(30,132,242,0.88),
-      0 0 60px rgba(30,132,242,1);
+      0 0 28px rgba(30,132,242,0.88),
+      0 0 30px rgba(30,132,242,1);
     }
   }
 
-  @keyframes flicker {
-    
+@keyframes flicker {
+
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
 
         
         box-shadow:
-            0 0 .5rem #fff,
-            inset 0 0 .5rem #fff,
-            0 0 2rem var(--neon-border-color),
-            inset 0 0 2rem var(--neon-border-color),
-            0 0 4rem var(--neon-border-color),
-            inset 0 0 4rem var(--neon-border-color);        
+            0 0 .15rem #fff,
+            inset 0 0 .15rem #fff,
+            0 0 1rem var(--neon-border-color),
+            inset 0 0 1rem var(--neon-border-color),
+            0 0 1.5rem var(--neon-border-color),
+            inset 0 0 1.5rem var(--neon-border-color);        
     }
     
     20%, 24%, 55% {        
         text-shadow: none;
         box-shadow: none;
     }    
+}
+
+@keyframes strip {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    50.1% {
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
 }
 
 
